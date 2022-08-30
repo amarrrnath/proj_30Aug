@@ -1,0 +1,38 @@
+service: proj_30Aug
+
+package:
+  exclude:
+    - __tests__/**
+
+provider:
+  name: aws
+  region: "us-west-2"
+  stage: "dev"
+  runtime: nodejs12.x
+
+resources:
+  Resources:
+    SQSDLQ_Dev:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: "proj_10Aug_DLQ_dev"
+    SQS_Dev:
+      Type: "AWS::SQS::Queue"
+      Properties:
+        QueueName: "proj_30Aug_dev"
+        RedrivePolicy:
+          deadLetterTargetArn:
+            Fn::GetAtt:
+              - "SQSDLQ"
+              - "Arn"
+
+functions:
+  SQSEventHandlerLambda: 
+    handler: app/index.SQSEventHandler
+    events:
+      - sqs:
+          arn:
+            Fn::GetAtt:
+              - SQS_Dev
+              - Arn
+          

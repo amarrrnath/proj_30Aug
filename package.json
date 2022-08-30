@@ -1,0 +1,24 @@
+{
+  "name": "proj_30aug",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest __tests__ --verbose --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amarrrnath/proj_30Aug.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amarrrnath/proj_30Aug/issues"
+  },
+  "homepage": "https://github.com/amarrrnath/proj_30Aug#readme",
+  "devDependencies": {
+    "jest": "^29.0.1",
+    "zip-webpack-plugin": "^4.0.1"
+  }
+}
